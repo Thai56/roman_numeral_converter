@@ -53,6 +53,9 @@ class App extends Component {
           <ul style={{ listStyleType: 'none' }}>
             <li>2 -  should return "II".</li>
             <li>3 -  should return "III".</li>
+            <li>420 - should return "CDXX"</li>
+            <li>4367 - should return "MMMMCCCLXVII"</li>
+            <li>3 -  should return "III".</li>
             <li>3900 -  should return "MMMCM"</li>
             <li>500 - should return "D"</li>
             <li>501 -  should return "DI"</li>

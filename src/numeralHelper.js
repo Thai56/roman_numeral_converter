@@ -49,7 +49,9 @@ const helper = {
 
     const numEqualNine = firstChar === 9;
 
-    console.log('handleHundreds', num, numeralArr, firstChar, numEqualNine)
+    const numEqualFour = firstChar === 4;
+
+    console.log('handleHundreds', num, numeralArr, firstChar, numEqualNine, numEqualFour)
 
     if (numLessThanHundred) return helper.handleTens((num * 1), numeralArr);
 
@@ -66,7 +68,6 @@ const helper = {
         return helper.handleTens(remainNumAfterNumeralAdded, numeralArr);
       } else {
         const tenMinusArr = [fiveHundred];
-        console.log('is this one firing')
         let i = 5;
         while(i < firstChar) {
         tenMinusArr.push(hundred);
@@ -77,6 +78,16 @@ const helper = {
         return helper.handleTens(remainNumAfterNumeralAdded, numeralArr);
       }
 
+    } else if (numEqualFour) {
+      const remainNumAfterNumeralAdded = num.toString().slice(1, num.toString().length);
+
+      const fourHundredArr = [hundred, fiveHundred];
+
+      fourHundredArr.forEach(numeral => numeralArr.push(numeral));
+
+      console.log('numEqualFour', numEqualFour, remainNumAfterNumeralAdded, numeralArr)
+
+      return helper.handleTens(remainNumAfterNumeralAdded, numeralArr);
     }
 
     let i = 0;
@@ -126,12 +137,13 @@ const helper = {
       } else {
        // fix here
       let i = 5;
+      numeralArr.push(fifty);
       while(i < firstChar) {
         numeralArr.push(ten);
         i++;
       }
 
-      numeralArr = fivePlusArr.concat(numeralArr);
+      // numeralArr = fivePlusArr.concat(numeralArr);
 
       return helper.handleOnes(remainNumAfterNumeralAdded, numeralArr);
       }
@@ -204,6 +216,7 @@ const helper = {
     }
   },
 };
+
 
 export default helper;
 
